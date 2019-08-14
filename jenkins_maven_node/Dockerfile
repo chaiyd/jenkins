@@ -12,10 +12,6 @@ ENV JENKINS_HOME $JENKINS_HOME
 ENV JENKINS_SLAVE_AGENT_PORT ${agent_port}
 
 RUN mkdir -p $JENKINS_HOME 
-#\
-#  && chown ${uid}:${gid} $JENKINS_HOME \
-#  && addgroup -g ${gid} ${group} \
-#  && adduser -h "$JENKINS_HOME" -u ${uid} -G ${group} -s /bin/bash -D ${user}
 
 VOLUME $JENKINS_HOME
 
@@ -57,4 +53,5 @@ RUN chmod a+x -R /usr/local/bin/
 ADD $maven.tgz /usr/local/
 ENV MAVEN_HOME /usr/local/$maven
 ENV PATH $MAVEN_HOME/bin:$PATH
+#install cnpm ,Use Taobao mirror
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
