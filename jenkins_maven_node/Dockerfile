@@ -1,7 +1,10 @@
 FROM openjdk:8-jdk-alpine
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
-    apk add --no-cache git openssh-client curl unzip bash ttf-dejavu coreutils tini npm
+    apk add --no-cache git openssh-client curl unzip bash ttf-dejavu coreutils tini npm tzdata \
+	&& cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone \
+    && apk del tzdata
 
 ARG http_port=8080
 ARG agent_port=50000
