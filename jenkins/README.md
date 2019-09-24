@@ -1,9 +1,10 @@
 使用Jenkins官方dokerfile进行更改，更换war包源地址默认为LTS
-更改启动用户
+
 
 build时，需指定版本号
-JENKINS_VERSION=jenkins版本号，注LTS版
+JENKINS_VERSION=jenkins版本号，注LTS版本号
 JENKINS_URL 可指定完整的url
+maven 变量为maven包名
 
 docker build --build-arg JENKINS_VERSION=2.176.2 -t jenkins:2.176.2 .
 

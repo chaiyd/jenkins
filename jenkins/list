@@ -1,0 +1,1000 @@
+   60  cd ..
+   61  ls
+   62  cd isc-mc-zuul
+   63  ls
+   64  cd logs/
+   65  ls
+   66  cd ..
+   67  cd isclink-gateway-proxy-run-service
+   68  ls
+   69  cd logs/
+   70  ls
+   71  cd ..
+   72  ls
+   73  cd isc-sso-open-service
+   74  cd logs/
+   75  ls
+   76  cd ..
+   77  ls
+   78  exit
+   79  docker ps |grep jenkins
+   80  docker restart f18bbc788773
+   81  top
+   82  free -h
+   83  top
+   84  free -h
+   85  top
+   86  ls
+   87  cd /opt/k8s/
+   88  ls
+   89  cd elk/
+   90  ls
+   91  vim log-pilot2.yaml 
+   92  vim log-pilot.yaml 
+   93  cd ..
+   94  ls
+   95  cd isc-monitoring/
+   96  ls
+   97  vim start-k8s.sh 
+   98  cd local/
+   99  ls
+  100  cd isc-monitoring-service-manager/
+  101  ls
+  102  vim isc-monitoring-service-manager-deployment.yml 
+  103  vim isc-monitoring-service-manager-service.yml 
+  104  ls
+  105  ll
+  106  vim isc-monitoring-service-manager-service.yml 
+  107  vim isc-monitoring-service-manager-deployment.yml 
+  108  cd ..
+  109  ls
+  110  cd ..
+  111  ls
+  112  vim start-k8s.sh 
+  113  ls
+  114  kubectl get pod
+  115  kubectl exec -it isc-monitoring-service-manager-6b856d8586-bllsq sh
+  116  kubectl exec -it isc-monitoring-service-user-7bb58c579c-9t889 sh
+  117  cd /opt/docker/isc/isc-monitoring/
+  118  ls
+  119  vim jar-cp.sh 
+  120  kubectl get all
+  121  kubectl get pod
+  122  ls
+  123  top
+  124  kubectl get all
+  125  kubectl get all -n monitoring
+  126  kubectl get all
+  127  kubectl get all -n monitoring
+  128  kubectl get pod -n monitoring
+  129  kubectl get all -n monitoring
+  130  free -h
+  131  kubectl get pod
+  132  kubectl get pod -A
+  133  kubectl get pod -A|wc -l
+  134  cd /var/docker/jenkins/workspace
+  135  ls
+  136  cd isc-config/test/
+  137  ls
+  138  cd isc-monitoring/
+  139  ls
+  140  cd isc-monitoring-cloud-zuul/
+  141  ls
+  142  vim application.yml 
+  143  cd ..
+  144  ls
+  145  cd isc-monitoring-service-manager/
+  146  ls
+  147  vim application.yml 
+  148  kubectl get pod -A
+  149  kubectl logs --tail 100 -f isc-nginx-local-5458676b89-7g7xm
+  150  kubectl get pv
+  151  kubectl get pod isc-nginx-local-5458676b89-7g7xm -o yaml
+  152  kubectl get pvc 
+  153  kubectl get pvc -A
+  154  kubectl get pvc common-pvc
+  155  kubectl get pvc common-pvc -o yaml
+  156  kubectl get pv k8s-pv-001 -o yaml
+  157  cd /var/k8s/
+  158  ls
+  159  cd isc-nginx-local/
+  160  ls
+  161  cd www/
+  162  ls
+  163  kubectl get pod isc-nginx-local-5458676b89-7g7xm -o yaml
+  164  kubectl logs --tail 100 -f isc-nginx-local-5458676b89-7g7xm
+  165  cd isc-operation-center-ui/
+  166  ls
+  167  cd ..
+  168  ls
+  169  kubectl get pod isc-nginx-local-5458676b89-7g7xm -o yaml
+  170  kubectl edit pod isc-nginx-local-5458676b89-7g7xm 
+  171  vim /opt/docker/isc-nginx-local/conf-cp.conf
+  172  cd /var/docker/jenkins/workspace/isc-config/test/
+  173  ls
+  174  cd isc-local-ui/
+  175  ls
+  176  vim isc-operation-center-ui.conf
+  177  pwd
+  178  kubectl get pod -A
+  179  kubectl get pod common-file-service-7f6bc977bd-xlsj4 
+  180  kubectl get pod common-file-service-7f6bc977bd-xlsj4 -o yaml
+  181  kubectl logs --tail 100 -f  common-file-service-7f6bc977bd-xlsj4 
+  182  kubectl logs --tail 100 -f  common-file-service-7f6bc977bd-xlsj4  -c common-file-nginx
+  183  kubectl logs --tail 1000 -f  common-file-service-7f6bc977bd-xlsj4  -c common-file-nginx
+  184  kubectl get pod -A
+  185  kubectl get pod -n monitoring
+  186  kubectl delete pod apm-eureka-7566c5fc9d-pzv2s -n monitoring
+  187  kubectl get pod -n monitoring
+  188  kubectl delete pod apm-eureka-7566c5fc9d-pzv2s -n monitoring
+  189  kubectl delete pod apm-eureka-7566c5fc9d-pzv2s -n monitoring --force --grace-period=0
+  190  kubectl get pod -n monitoring
+  191  kubectl delete pod apm-item-676bb76486-7t7sv -n monitoring --force --grace-period=0
+  192  kubectl describe pod oap-86b4c47bb8-zpvlz -n monitoring
+  193  kubectl get pod -n monitoring
+  194  kubectl delete pod oap-86b4c47bb8-zpvlz  -n monitoring --force --grace-period=0
+  195  kubectl delete pod prometheus-deployment-7bc6dc6f77-w9hsr  -n monitoring --force --grace-period=0
+  196  kubectl delete pod ui-deployment-59b88b5db4-frz9b  -n monitoring --force --grace-period=0
+  197  kubectl get pod -n monitoring
+  198  kubectl delete pod elasticsearch-0  -n monitoring --force --grace-period=0
+  199  kubectl get pod -n monitoring
+  200  kubectl delete pod grafana-8578bd7b8b-pcmq6  -n monitoring --force --grace-period=0
+  201  kubectl delete pod elasticsearch-2  -n monitoring --force --grace-period=0
+  202  kubectl get pod -n monitoring
+  203  kubectl delete pod oap-86b4c47bb8-f5hzg  -n monitoring --force --grace-period=0
+  204  kubectl get pod -n monitoring
+  205  kubectl logs --tail 1000 -f  common-file-service-7f6bc977bd-xlsj4  -c common-file-nginx
+  206  kubectl get pod -A
+  207  kubectl logs --tail 100 -f oap-86b4c47bb8-2pt5q -n monitoring
+  208  kubectl get pod -A
+  209  kubectl delete pod oap-86b4c47bb8-2pt5q -n monitoring
+  210  kubectl delete pod oap-86b4c47bb8-7md66 -n monitoring
+  211  kubectl get pod -A
+  212  kubectl get pod -A | grep oap
+  213  kubectl logs --tail 100 -f -p oap-86b4c47bb8-b9zxv -n monitoring
+  214  kubectl get pod -A | grep oap
+  215  curl http://elasticsearch-api:9200
+  216  kubectl get pod -A | grep elas
+  217  kubectl logs --tail 100 -f elasticsearch-0 -n monitoring
+  218  kubectl logs --tail 1000 -f elasticsearch-0 -n monitoring
+  219  kubectl get svc -n monitoring
+  220  kubectl get pod -A | grep elas
+  221  kubectl exec -it elasticsearch-0 bash -n monitoring
+  222  kubectl get pod -A | grep elas
+  223  kubectl delete pod elasticsearch-0 -n monitoring
+  224  kubectl delete pod elasticsearch-1 -n monitoring
+  225  kubectl delete pod elasticsearch-2 -n monitoring
+  226  kubectl get pod -A | grep elas
+  227  kubectl exec -it elasticsearch-0 bash -n monitoring
+  228  kubectl get pod -A | grep opa
+  229  kubectl get pod -A | grep oap
+  230  kubectl delete pod oap-86b4c47bb8-b9zxv -n monitroing
+  231  kubectl delete pod oap-86b4c47bb8-b9zxv -n monitoring
+  232  kubectl delete pod oap-86b4c47bb8-rwkvx -n monitoring
+  233  kubectl get pod -A | grep oap
+  234  kubectl logs --tail 100 -f oap-86b4c47bb8-f9t88 -n monitoring
+  235  kubectl get pod -A | grep oap
+  236  cd /opt/
+  237  ls
+  238  cd k8s/
+  239  ls
+  240  df -h
+  241  free -m
+  242  free g
+  243  free -g
+  244  ls
+  245  vim /opt/k8s/isc-rc/start-k8s.sh
+  246  kubectl get pod -A
+  247  kubectl logs --tail 100 -f isc-mc-58c54dc68f-pds2p -n isc-os-cloud
+  248  kubectl logs --tail 100 -f isc-mc-58c54dc68f-pds2p -n isc-os-cloud -c isc-mc-zuul
+  249  kubectl get pod -A
+  250  kubectl get pods -A | grep isc-mo
+  251  kubectl exec -it isc-monitoring-cloud-zuul-56c6c6f8fb-76wbb sh
+  252  kubectl get svc | grep isc-mo
+  253  ls
+  254  pwd
+  255  clear
+  256  cd /opt/docker/
+  257  ls
+  258  cd isc
+  259  ls
+  260  vim Dockerfile
+  261  vim jar-cp-alternative.sh 
+  262  ll m-a\
+  263  ll -a
+  264  rm -rf .jar-cp-alternative.sh.swp 
+  265  vim jar-cp-alternative.sh 
+  266  kubectl get pods | grep bi-report
+  267  kubectl exec -it bi-report-bcbf4544-lcclj sh
+  268  clear
+  269  clear
+  270  ls
+  271  clear
+  272  cd /var
+  273  ls
+  274  cd k8s
+  275  ks
+  276  ls
+  277  cd isc-permission-service/
+  278  ls
+  279  cd logs
+  280  ls -l
+  281  netstat -tnl
+  282  docker ps
+  283  netstat -tnl
+  284  ping 192.168.8.47
+  285  telnet 192.168.8.47 7010
+  286  ls
+  287  cd ~/.ssh/
+  288  ls
+  289  cat authorized_keys 
+  290  cd /var/
+  291  ls
+  292  cd k8s/
+  293  ls
+  294  cd /opt/docker/isc
+  295  ;s
+  296  ls
+  297  cd isc-rc
+  298  ls
+  299  cd ..
+  300  ls
+  301  cat build
+  302  cat build.sh 
+  303  cd /opt/k8s/isc-mc/
+  304  ls
+  305  cat isc-mc-service.yml
+  306  cat isc-mc-deployment.yml
+  307  cd /home/
+  308  ls
+  309  cd /var/k8s/
+  310  ls
+  311  cd isc-permission-service
+  312  ls
+  313  cd logs/
+  314  ls
+  315  cd ../..
+  316  cd isc-mc-user-service/
+  317  ls
+  318  cd logs/
+  319  ls
+  320  docker ps
+  321  docker ps | grep isv
+  322  docker ps | grep isc-mc-
+  323  cd /opt/k8s/
+  324  ls
+  325  cd isc-permission
+  326  ls
+  327  cat isc-permission-service.yml
+  328  cat isc-permission-deployment.yml
+  329  docker ps | grep isc-mc
+  330  docker exec -it f5c27c61c1d4 sh
+  331  docker exec -it 619b77d349fa sh
+  332  cd ..
+  333  ls
+  334  cd isc-mc/
+  335  ls
+  336  cat 
+  337  cat isc-mc-deployment.yml
+  338  docker exec -it 619b77d349fa sh
+  339  ls
+  340  cd /var/k8s/isc-os-cloud/isc-mc-user-service/
+  341  cd logs/
+  342  ls
+  343  exit
+  344  ls
+  345  cd /var/k8s/
+  346  ls
+  347  cd isc-mc-user-service/
+  348  ls
+  349  cd logs/
+  350  ls
+  351  ll
+  352  cd
+  353  ls
+  354  cd /var/k8s/
+  355  ls
+  356  cd /opt/k8s/isc-mc/
+  357  ls
+  358  vim isc-mc-deployment.yml 
+  359  cd /var/k8s/isc-mc-user-service/
+  360  ls
+  361  cd logs/
+  362  ls
+  363  rm -rf isc-mc-user-service.jar.out 
+  364  ls
+  365  cd ..
+  366  ls
+  367  cd ..
+  368  ls
+  369  rm -rf isc-mc-user-service/
+  370  cd isc-os-cloud/
+  371  ls
+  372  cd isc-mc-user-service/
+  373  ls
+  374  cd logs/
+  375  ls
+  376  pwd
+  377  ps
+  378  ps -A
+  379  ls
+  380  cd /var/k8s/
+  381  ls
+  382  cd isc-mc-
+  383  cd isc-mc-user-service/
+  384  ls
+  385  cd logs/
+  386  ls
+  387  ll
+  388  pwd
+  389  docker ps |grep isc-mc-user-service
+  390  docker exec -it 619b77d349fa bash
+  391  docker exec -it 619b77d349fa sh
+  392  cd /opt/k8s/
+  393  ls
+  394  cd isc-link
+  395  ls
+  396  docker ps | grep link
+  397  docker exec -it a3bc04910894 sh
+  398  exi
+  399  exit
+  400  ls
+  401  docker ps
+  402  docker images
+  403  docker exec -it fc84b676f9e9 bash
+  404  docker run -it --rm  fc84b676f9e9 bash
+  405  docker run -it --rm  fcdba058141e56 bash
+  406  docker run -it --rm  f58052cafca3  bash
+  407  docker run -it --rm  f58052cafca3  sh
+  408  ls
+  409  cd /opt/
+  410  ls
+  411  cd k8s/
+  412  ls
+  413  cd common-sms/
+  414  ls
+  415  cd ..
+  416  ls
+  417  cd ..
+  418  ls
+  419  cd docker/
+  420  ls
+  421  cd bi-garden/
+  422  ls
+  423  cd ..
+  424  ls
+  425  cd common-file-service/
+  426  ls
+  427  cd common-file-service/
+  428  ls
+  429  vim Dockerfile 
+  430  ls
+  431  vim start.sh 
+  432  docker exec -it fc84b676f9e9 bash
+  433  docker run -it --rm  f58052cafca3  sh
+  434  ls
+  435  vim Dockerfile 
+  436  ls
+  437  docker run -it --rm  f58052cafca3  sh
+  438  vim /opt/docker/shell/common-file-service/build.sh
+  439  vim /opt/docker/shell/common-file-service/Dockerfile 
+  440  kubectl get pod -A
+  441  kubectl logs --tail 100 -f common-file-service-5855d8d46f-82hgg 
+  442  kubectl logs --tail 100 -f common-file-service-5855d8d46f-82hgg -c common-file-service
+  443  kubectl logs --tail 100 -f common-file-service-5855d8d46f-82hgg -C common-file-service
+  444  kubectl logs --tail 100 -f common-file-service-5855d8d46f-82hgg -c common-file-service
+  445  ls
+  446  pwd
+  447  vim /opt/docker/shell/common-file-service/Dockerfile 
+  448  vim /opt/docker/shell/common-file-service/start-k8s.sh 
+  449  vim /opt/docker/shell/common-file-service/start
+  450  vim /opt/docker/shell/common-file-service/start.sh 
+  451  kubectl logs --tail 100 -f common-file-service-5855d8d46f-82hgg -c common-file-service
+  452  kubectl get pod -A
+  453  kubectl describe pod common-file-service-5855d8d46f-82hgg 
+  454  ls
+  455  vim Dockerfile 
+  456  vim /opt/docker/shell/common-file-service/Dockerfile 
+  457  kubectl get pod -A
+  458  kubectl describe pod common-file-service-6c7687bd79-gwvc6
+  459  kubectl get pod
+  460  kubectl logs --tail 100 -f common-file-service-6c7687bd79-gwvc6
+  461  kubectl logs --tail 100 -f common-file-service-6c7687bd79-gwvc6 -c common-file-service
+  462  ls
+  463  vim Dockerfile 
+  464  vim /opt/docker/shell/common-file-service/Dockerfile 
+  465  kubectl get pod
+  466  kubectl exec -it common-file-service-5ffc676b5c-zvjv5 bas
+  467  kubectl exec -it common-file-service-5ffc676b5c-zvjv5 sh
+  468  ls
+  469  vim /opt/docker/shell/common-file-service/start.sh 
+  470  kubectl get pod -A
+  471  kubectl get pod 
+  472  kubectl exec -it common-file-service-7b6966bc4b-tjc25 sh
+  473  kubectl exec -it isc-monitoring-cloud-zuul-56c6c6f8fb-76wbb sh
+  474  kubectl get all
+  475  kubectl get ds 
+  476  kubectl get ds f
+  477  cd /opt/k8s/
+  478  ls
+  479  cd efk/
+  480  ls
+  481  vim fluentd-es-configmap.yaml 
+  482  vim fluentd-es-ds.yaml 
+  483  kubectl get pod -n monitoring
+  484  kubectl getall pod -n monitoring
+  485  kubectl get all  -n monitoring
+  486  ls
+  487  ll
+  488  kubectl apply -f fluentd.yaml 
+  489  kubectl get ds -n monitoring
+  490  kubectl get pod -n monitoring
+  491  kubectl get ds -n monitoring
+  492  nano counter.yaml
+  493  yum install -y nano
+  494  ls
+  495  vim tomcat-efk.yaml 
+  496  kubectl get pod -n monitoring
+  497  ls
+  498  kubectl apply -f tomcat-efk.yaml 
+  499  kubectl get pod -n monitoring
+  500  kubectl logs tomcat -n monitoring
+  501  kubectl describe pod tomcat -n monitoring
+  502  kubectl get all -n monitoring
+  503  ls
+  504  ll
+  505  vim fluentd-es-configmap.yaml 
+  506  kubectl get all 
+  507  kubectl logs common-file-service-6c7687bd79-gwvc6 
+  508  kubectl logs pod  common-file-service-6c7687bd79-gwvc6 
+  509  kubectl logs   common-file-service-6c7687bd79-gwvc6 common-file-service
+  510  docker ps |grep common-file
+  511  docker logs c97b4754a7a1
+  512  docker exec -it  c97b4754a7a1 sh
+  513  docker exec -it  c97b4754a7a1 
+  514  docker exec -it  c97b4754a7a1 bash
+  515  docker ps |grep common-file
+  516  docker ps 
+  517  kubectl get pod 
+  518  kubectl logs common-file-service-7b6966bc4b-tjc25 
+  519  kubectl logs common-file-service-7b6966bc4b-tjc25 -c common-file-service
+  520  kubectl get pod 
+  521  kubectl exec -it common-file-service-7b6966bc4b-tjc25 -c common-file-service
+  522  kubectl exec -it common-file-service-7b6966bc4b-tjc25 -c common-file-service -- sh
+  523  docker ps
+  524  vi .bashrc 
+  525  docker ps | grep show
+  526  docker ps | grep show
+  527  ps -ef | grep deamon
+  528  ps -ef | grep show
+  529  ls
+  530  cd /var/docker/
+  531  ls
+  532  cd jenkins/
+  533  ls
+  534  ls
+  535  cd /var/docker/jenkins/
+  536  free -h
+  537  ls
+  538  cd workspace/
+  539  ls
+  540  cd isc-permission-system-ui
+  541  ls
+  542  tar -zcvf dist.tgz dist/
+  543  ls
+  544  sz dist.tgz 
+  545  top
+  546  ls
+  547  cd /opt/k8s/
+  548  ls
+  549  ll
+  550  cd efk/
+  551  ls
+  552  kubectl get pod
+  553  ls
+  554  kubectl exec -it isc-monitoring-service-manager-7dcc4cc89-tpjgh sh
+  555  ls
+  556  kubectl get all
+  557  kubectl get pod
+  558  kubectl exec -it isc-monitoring-service-user 
+  559  kubectl exec -it isc-monitoring-service-user sh
+  560  kubectl get pod 
+  561  kubectl exec -it isc-monitoring-service-user-8565445945-zldpl -- sh
+  562  ls
+  563  kubectl get pod 
+  564  kubectl exec -it isc-monitoring-service-manager-5c5545d88b-29bx8 -- sh
+  565  kubectl get pod
+  566  kubectl exec -it isc-monitoring-service-user-579d749b68-smvcn -- sh
+  567  ls
+  568  kubectl get pod
+  569  kubectl exec -it isc-monitoring-service-user-759bd68b6c-9lqjp -- sh
+  570  ls
+  571  ll
+  572  kubectl get all -A
+  573  ls
+  574  cd /var/log/containers/
+  575  ll
+  576  ls
+  577   cd /opt/k8s/
+  578  ls
+  579  ll
+  580  cd efk/
+  581  ls
+  582  vim fluentd.yaml 
+  583  ls
+  584  cd /var/docker/jenkins/
+  585  ls
+  586  cd workspace/
+  587  ls
+  588  rm -rf  common
+  589  ls
+  590  cd common-location-service
+  591  ls
+  592  cd jar/
+  593  ls
+  594  cd ..
+  595  ls
+  596  cd /opt/k8s/
+  597  ls
+  598  cp -r common-eureka-cloud/ common-location-service
+  599  ls
+  600  cd common-location-service/
+  601  ls
+  602  mv common-eureka-deployment.yml common-location-service.yml
+  603  ls
+  604  mv common-location-service.yml common-location-deployment.yml 
+  605  ls
+  606  mv common-eureka-service.yml common-location-service.yml
+  607  ls
+  608  vim common-location-deployment.yml 
+  609  ls
+  610  vim start-k8s.sh 
+  611  ls
+  612  vim common-location-deployment.yml 
+  613  ls
+  614  vim common-location-service.yml 
+  615  ls
+  616  vim common-location-deployment.yml 
+  617  kubectl get pvc
+  618  kubectl get pvc -A
+  619  ls
+  620  pwd
+  621  ls
+  622  vim common-location-deployment.yml 
+  623  ls
+  624  vim common-location-service.yml 
+  625  ls
+  626  kubectl apply -f common-location-deployment.yml 
+  627  ls
+  628  kubectl apply -f common-location-service.yml 
+  629  ls
+  630  kubectl get pod -A
+  631  ls
+  632  cd /var/docker/
+  633  ks
+  634  ls
+  635  cd jenkins/
+  636  ls
+  637  cd workspace/
+  638  ls
+  639  cd bi-tool
+  640  cd bi-tool-ui
+  641  ls
+  642  rm -rf node_modules/ package-lock.json 
+  643  ls
+  644  cd /var/k8s/
+  645  sl
+  646  ls
+  647  cd iscshow-run-service/
+  648  ls
+  649  cd logs/
+  650  ls
+  651  tail -100f iscshow-run-service.log
+  652  cd ..
+  653  ls
+  654  cd ..
+  655  ls
+  656  cd redis/
+  657  ls
+  658  cd ..
+  659  ls
+  660  cd isc-os-cloud/
+  661  ls
+  662  cd iscshow-dev-service/
+  663  ls
+  664  cd logs/
+  665  ls
+  666  tail -100f iscshow-dev-service.log
+  667  kubectl get pod
+  668  kubectl exec -it common-file-service-7b6966bc4b-tjc25  bash 
+  669  kubectl exec -it common-file-service-7b6966bc4b-tjc25  sh -c common-file-service
+  670  kubectl get pod 
+  671  docker run my_container dumb-init python -c 'while True: pass'
+  672  yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel migrationtools
+  673  ls
+  674  cd /etc/yum.repos.d/
+  675  ls
+  676  grep -r 8.8 
+  677  grep -r 9.11
+  678  mv CentOS-Base.repo CentOS-Base.repo.bal
+  679  mv epel.repo epel.repo.bak
+  680  yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel migrationtools
+  681  cd
+  682  ls
+  683  vim get_container_by_ip.sh 
+  684  docker ps | grep show
+  685  docker exec -it 2c7cc253e729 sh
+  686  cd /opt/k8s/
+  687  ls
+  688  cd isc-show/
+  689  ls
+  690  cd cloud/
+  691  ls
+  692  vi isc-show-deployment.yml 
+  693  vi isc-show-service.yml 
+  694  vi start-k8s.sh 
+  695  cd ../local/
+  696  ls
+  697  vi start-k8s.sh 
+  698  vi isc-show-deployment.yml 
+  699  vi isc-show-service.yml 
+  700  ls
+  701  kubectl get pod -A |grep bi-requ
+  702  kubectl get pod -A |grep bi-re
+  703  cd /var/k8s/
+  704  ls
+  705  cd bi-report-service/
+  706  ls
+  707  cd logs/
+  708  ls
+  709  kubectl exec -it bi-report-5f6fd98676-dpbmp  sh
+  710  cd /var/docker/jenkins/
+  711  ks
+  712  ls
+  713  cd workspace/
+  714  ls
+  715  cd bi-tool-ui
+  716  ls
+  717  pwd
+  718  ls
+  719  vim package.json 
+  720  ls
+  721  rm -rf  package-lock.json package.json 
+  722  ls
+  723  vim package.json 
+  724  cd ..
+  725  ls
+  726  cd bi-report-ui
+  727  ls
+  728  rm -rf node_modules/
+  729  ls
+  730  rm -rf package-lock.json 
+  731  cd /var/k8s/
+  732  cd bi-tools-service/
+  733  ls
+  734  cd logs/
+  735  ll
+  736  ll -h
+  737  rm -rf service-error.log 
+  738  ls
+  739  rm -rf service-info.
+  740  rm -rf service-info.log 
+  741  ls
+  742  ll -lh
+  743  tail -fn1000 service-info.2019-09-09.log 
+  744  ls
+  745  ll -lh
+  746  tar -zcvf logs.tgz *
+  747  ls
+  748  ll -lh
+  749  rm -rf service-*
+  750  ls
+  751  rm -rf bi-tools-service.jar.out logs.tgz 
+  752  ls
+  753  cd
+  754  kubectl get pod -A |bi-
+  755  kubectl get pod -A |grep bi-
+  756  kubectl exec -it bi-report-6679c5f8b7-d4wdq sh
+  757  ls
+  758  docker ps |grep redis
+  759  cd /opt/k8s/redis/
+  760  ls
+  761  vim redis-deployment.yml 
+  762  ls
+  763  vim redis-service.yml 
+  764  cd ..
+  765  ls
+  766  cd m
+  767  cd mysql/
+  768  ls
+  769  cat mysql-deployment.yml 
+  770  ls
+  771  cd ..
+  772  ls
+  773  cd redis/
+  774  ls
+  775  cat redis-deployment.yml 
+  776  cd /var/k8s/redis/
+  777  ls
+  778  cd ..
+  779  ls
+  780  cd /opt/k8s/
+  781  ls
+  782  cd redis/
+  783  ls
+  784  vim redis-deployment.yml 
+  785  cd ..
+  786  ls
+  787  cd emqx/
+  788  ls
+  789  vim emqx-service.yml 
+  790  ls
+  791  cd /var/k8s/ls
+  792  cd /var/k8s/
+  793  ls
+  794  cd redis/
+  795  ls
+  796  mkdir conf
+  797  ls
+  798  cd conf/
+  799  ls
+  800  vim redis.conf
+  801  ls
+  802  vim redis.conf 
+  803  ls
+  804  cd /var/k8s/
+  805  ls
+  806  cd ls
+  807  cd redis/
+  808  ls
+  809  cd /opt/k8s/redis/
+  810  ls
+  811  vim redis-deployment.yml redis-
+  812  vim redis-deployment.yml
+  813  ls
+  814  kubectl redis-deployment.yml 
+  815  ls
+  816  kubectl apply -f redis-deployment.yml 
+  817  cd /opt/
+  818  cd docker/
+  819  ls
+  820  cd bi-
+  821  cd bi-report/
+  822  ls
+  823  rm -rf *
+  824  ls
+  825  cd local/
+  826  ls
+  827  cd ..
+  828  ls
+  829  cd ..
+  830  ls
+  831  cd isc-mc/
+  832  ls
+  833  cd isc-mc-management-service/
+  834  ls
+  835  cd isc-mc-management-service/
+  836  ls
+  837  cd ..
+  838  ls
+  839  cd /opt/docker/isc
+  840  ls
+  841  vim Dockerfile-alternative 
+  842  ls
+  843  cd isc-monitoring/
+  844  ls
+  845  vim Dockerfile 
+  846  ls
+  847  cd ..
+  848  ls
+  849  cd iscos-common/
+  850  ls
+  851  vim Dockerfile 
+  852  kubectl get pods -A | grep bi-
+  853  kubectl get pods -A | grep isc-mo
+  854  kubectl exec -it isc-monitoring-cloud-zuul-6f57779cc6-76b94 sh
+  855  kubectl get pods -A | grep bi-tools
+  856  kubect exec -it bi-tools-8547c5d459-fl2xk sh
+  857  kubectl exec -it bi-tools-8547c5d459-fl2xk sh
+  858  ls
+  859  cd /opt/docker/
+  860  ls
+  861  cd bi-report/
+  862  ls
+  863  cd local/
+  864  ls
+  865  vim /opt/docker/isc/jar-cp-alternative.sh
+  866  cd /opt/docker/isc/
+  867  ks
+  868  ls
+  869  vim Dockerfile-alternative 
+  870  ls
+  871  vim jar-cp-alternative.sh 
+  872  ls
+  873  vim Dockerfile-alternative 
+  874  kubectl get pod -A
+  875  kubectl get pod -A |grep bi-
+  876  kubectl exec -it bi-report-f4f759cf4-dvsrt sh
+  877  kubectl get pod -A |grep bi-
+  878  kubectl exec -it bi-report-85c4c6649b-8fz84 sh
+  879  ls
+  880  vim jar-cp-alternative.sh 
+  881  ls
+  882  vim jar-cp-alternative.sh 
+  883  ls
+  884  kubectl get pod -A
+  885  kubectl get pod -A |grep isc-com
+  886  kubectl get pod -A |grep isc-mon
+  887  kubectl exec -it isc-monitoring-cloud-zuul-6889d5f887-jbm9t sh
+  888  ls
+  889  cd /opt
+  890  ls
+  891  cd docker/
+  892  ls
+  893  cd isc
+  894  ls
+  895  vim Dockerfile-alternative 
+  896  vim Dockerfile
+  897  ls
+  898  vim Dockerfile-alternative 
+  899  vim jar-cp-alternative.sh 
+  900  vim Dockerfile-alternative 
+  901  cd /opt/docker/
+  902  ls
+  903  cd isc-monitoring/
+  904  ls
+  905  cd local/
+  906  ls
+  907  cd isc-monitoring-
+  908  cd isc-monitoring-cloud-zuul/
+  909  ls
+  910  vim Dockerfile 
+  911  ls
+  912  vim Dockerfile 
+  913  ls
+  914  vim Dockerfile 
+  915  ls
+  916  vim application.yml 
+  917  ls
+  918  vim Dockerfile 
+  919  ls
+  920  vim Dockerfile 
+  921  ls
+  922  cd ..
+  923  ls
+  924  cd ..
+  925  ls
+  926  cd ..
+  927  ls
+  928  cd ..
+  929  ls
+  930  cd ..
+  931  cd opt/k8s/
+  932  ls
+  933  cd bi-report/
+  934  ls
+  935  cd local/
+  936  ls
+  937  kubectl get pods -A
+  938  kubectl get pods -A | grep bi-
+  939  kubectl exec -it bi-report-5588bddcb6-4cxt8 sh
+  940  cd
+  941  ls
+  942  cd /var/docker/jenkins/
+  943  ls
+  944  cd workspace/
+  945  ls
+  946  cd bi-report-ui
+  947  ls
+  948  cd
+  949  ls
+  950  cd /var/k8s/
+  951  ls
+  952  cd redis/
+  953  ls
+  954  cd conf/
+  955  ls
+  956  cd ..
+  957  ls
+  958  kubectl get pod -A |grep redis
+  959  kubectl --help
+  960  kubectl get pod -A |grep redis
+  961  kubectl describe pod  redis-7c95cfbfcf-q9z6k
+  962  ls
+  963  cd /var/k8s/
+  964  ls
+  965  cd redis/
+  966  ls
+  967  cd /opt/k8s/redis/
+  968  ls
+  969  vim redis-
+  970  vim redis-deployment.yml 
+  971  kubectl apply -f redis-deployment.yml 
+  972  kubectl get pod -A
+  973  kubectl get pod -A |grep redis
+  974  kubectl describe pod  redis-6785b68dbc-qlqqk 
+  975  ls
+  976  vim redis-deployment.yml 
+  977  kubectl apply -f redis-deployment.yml 
+  978  kubectl get pod -A |grep redis
+  979  cd /var/k8s/redis/
+  980  ls
+  981  cd conf/
+  982  ls
+  983  cd ..
+  984  ls
+  985  cd ..
+  986  ls
+  987  cd
+  988  cd /opt/k8s/redis/
+  989  ls
+  990  cat redis-service.yml 
+  991  kubectl get pod -A |grep redis
+  992  kubectl exec -it redis-696d77cfd8-x8bhv sh
+  993  ls
+  994  vim redis-deployment.yml 
+  995  kubectl exec -it redis-696d77cfd8-x8bhv sh
+  996  vim redis-deployment.yml 
+  997  kubectl exec -it redis-696d77cfd8-x8bhv sh
+  998  ls
+  999  vim redis-deployment.yml 
+ 1000  netstat -ntlp |grep 18600
+ 1001  cd /var/k8s/redis/
+ 1002  ls
+ 1003  cd conf/
+ 1004  ls
+ 1005  sz redis.conf 
+ 1006  ls
+ 1007  cd ..
+ 1008  ls
+ 1009  rm -rf conf/
+ 1010  ls
+ 1011  cd conf/
+ 1012  ls
+ 1013  rz -E
+ 1014  ls
+ 1015  vim redis.conf 
+ 1016  ls
+ 1017  cd /opt/k8s/mysql/
+ 1018  ls
+ 1019  cata mysql-deployment.yml 
+ 1020  cat mysql-deployment.yml 
+ 1021  free -h
+ 1022  top
+ 1023  ls
+ 1024  docker ps |grep jenkins
+ 1025  docker exec -it f18bbc788773 sh
+ 1026  df -h
+ 1027  ls
+ 1028  cd ..
+ 1029  ls
+ 1030  cd common-file-service/
+ 1031  ls
+ 1032  free -h
+ 1033  echo 3 > /proc/sys/vm//drop_caches 
+ 1034  free -h
+ 1035  top
+ 1036  free -h
+ 1037  docker ps |grep nginx
+ 1038  kubectl get pod -A |grep nginx
+ 1039  kubectl describe isc-nginx-cloud-77c8d87f77-zlkcr 
+ 1040  kubectl describe  pod isc-nginx-cloud-77c8d87f77-zlkcr 
+ 1041  kubectl exec -it  isc-nginx-local-cm-fffc55f48-dxvx9  sh
+ 1042  ls
+ 1043  cd  /opt/docker/isc-nginx-local/
+ 1044  ls
+ 1045  vim /opt/docker/isc-nginx-local/configmap-cp.conf
+ 1046  top
+ 1047  cd
+ 1048  ls
+ 1049  docker ps |grep jenkins
+ 1050  docker stop f18bbc788773
+ 1051  d /opt/docker/
+ 1052  ls
+ 1053  cd /opt/docker/
+ 1054  ls
+ 1055  cd jenkins
+ 1056  ls
+ 1057  cd ../jenkins_maven/
+ 1058  ls
+ 1059  history > list
