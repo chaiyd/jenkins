@@ -11,6 +11,7 @@ ARG agent_port=50000
 ARG JENKINS_HOME=/var/jenkins_home
 ARG REF=/usr/share/jenkins/ref
 ARG maven=maven-3.6.1
+ARG JENKINS_VERSION=2.176.3
 
 ENV JENKINS_HOME $JENKINS_HOME
 ENV JENKINS_SLAVE_AGENT_PORT ${agent_port}
@@ -26,7 +27,6 @@ VOLUME $JENKINS_HOME
 RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 
 # jenkins version being bundled in this docker image
-ARG JENKINS_VERSION
 ENV JENKINS_VERSION ${JENKINS_VERSION}
 
 # Can be used to customize where jenkins.war get downloaded from
