@@ -1,4 +1,4 @@
-FROM isc-jdk8:alpine3.10
+FROM chaiyd/openjdk:jdk8-alpine
 
 RUN apk add --no-cache git openssh-client curl unzip bash ttf-dejavu coreutils tini npm
 
