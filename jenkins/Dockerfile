@@ -1,5 +1,7 @@
 FROM chaiyd/openjdk:jdk8-alpine
 
+LABEL maintainer="Jenkins Docker Maintainers <chaiyd.cn@gmail.com>"
+
 RUN apk add --no-cache git openssh-client curl unzip bash ttf-dejavu coreutils tini npm
 
 ARG user=jenkins
