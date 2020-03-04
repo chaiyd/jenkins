@@ -32,7 +32,8 @@ RUN mkdir -p /usr/share/jenkins/ref/init.groovy.d
 ENV JENKINS_VERSION ${JENKINS_VERSION}
 
 # Can be used to customize where jenkins.war get downloaded from
-ARG JENKINS_URL=https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/${JENKINS_VERSION}/jenkins.war
+#ARG JENKINS_URL=https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/${JENKINS_VERSION}/jenkins.war  #china url
+ARG JENKINS_URL=http://mirror.xmission.com/jenkins/war-stable/${JENKINS_VERSION}/jenkins.war
 
 RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war 
 
