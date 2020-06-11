@@ -5,10 +5,10 @@ JENKINS_VERSION=jenkins版本号，注LTS版
 JENKINS_URL 可指定完整的url
 
 Use Jenkins official dokerfile to change, update the war package source address default to LTS. 
-Change the startup user.
-When building, you need to specify the version number. 
-JENKINS_VERSION=jenkins for LTS number.
-JENKINS_URL = jenkins war download url.
+## Change the startup user.
+## When building, you need to specify the version number. 
+## JENKINS_VERSION=jenkins for LTS number.
+## JENKINS_URL = jenkins war download url.
 
 docker build --build-arg JENKINS_VERSION=2.176.2 -t jenkins:2.176.2 .
 
