@@ -1,0 +1,155 @@
+properties([parameters([
+        [$class: 'NodeParameterDefinition', allowedSlaves: [], defaultSlaves: ['master'], description: '请选择构建节点', name: "NODE", nodeEligibility: [$class: 'AllNodeEligibility'], triggerIfResult: 'multiSelectionDisallowed'], 
+        choice(name: 'ENV_TYPE', choices: ['dev', 'test', 'performance', 'pre', 'demo', 'other'], description: '环境类型： dev：开发环境；test：测试环境；performance: 性能测试环境, pre：预发环境；other：其他环境，根据用途而定'),
+        choice(name: 'SERVICE_TYPE', choices: ['local', 'cloud'], description: '服务类型： local：本地服务， cloud：云端服务'),
+        string(defaultValue: 'http://10.30.30.3/common/services.git', description: '项目仓库地址', name: 'PROJECT_URL'),
+        gitParameter(name: 'BRANCH_TAG', type: 'PT_BRANCH_TAG', branchFilter: '', defaultValue: 'master', selectedValue: 'DEFAULT', useRepository: "${params.PROJECT_URL}", sortMode: 'DESCENDING_SMART', description: '选择要项目的分支或Tag'),
+        string(defaultValue: 'common-eureka', description: '服务模块名称', name: 'MODULE_NAME'),
+		[$class: 'WReadonlyStringParameterDefinition', defaultValue: '-Dproguard.obfuscate.ext=""', description: '代码混淆参数', name: 'OBFUSCATE'],
+		booleanParam(defaultValue: true, description: '单元测试', name: 'JUnit'),
+        booleanParam(defaultValue: true, description: '静态检查', name: 'SonarQube'),
+        booleanParam(defaultValue: true, description: 'API测试', name: 'API_CHECK'),
+        booleanParam(defaultValue: true, description: '持续发布', name: 'Publish')
+        ])])
+
+node("${NODE}") {
+	checkout scm
+	def CREENTIALS_ID = 'd9261dd3-9ec7-4b06-8888-2cb027c16fda'
+//	MODULE_NAME = MODULE_NAME.toLowerCase()
+	echo "模块名称为: ${MODULE_NAME}"
+
+	sh '[ -n "${BRANCH_TAG}" ] || { echo -e "branch或tag：${BRANCH_TAG} 不存在或为空，请检查输入的branch或tag!" && exit 11; }'
+
+	stage('拉取项目代码') {
+		echo "拉取项目代码到子目录project"
+		dir("project"){
+			echo "从代码仓库：${params.PROJECT_URL} 拉取代码，并切换到分支或Tag：${params.BRANCH_TAG}"
+			git branch: 'master', credentialsId: "${CREENTIALS_ID}", url: "${params.PROJECT_URL}"
+			sh '[ -n "${BRANCH_TAG}" ] && git checkout ${BRANCH_TAG} || { echo -e "切换至指定的branch或tag，branch或tag：${BRANCH_TAG} 不存在或为空，请检查输入的branch或tag!" && exit 111; }'
+		}
+		
+	}
+
+	stage('检查配置文件') {
+		echo "检查配置文件application.yml"
+		sh "grep -c 'active:.*local' project/${MODULE_NAME}/src/main/resources/application.yml && (echo 'application.yml文件中的active项不可为local';exit 1) || exit 0"
+	}
+
+
+	echo "根据Branch或Tag结合当前时间生成镜像Tag"
+	def dateFromat =  new SimpleDateFormat("yyyyMMdd")
+	def now_date=new Date()
+	def date = dateFromat.format(now_date)
+	String[] tmp_list;
+	tmp_list = BRANCH_TAG.split('/')
+	if( tmp_list[0].equalsIgnoreCase("origin") ){
+		String[] tmp;
+		tmp = tmp_list[1].split('-')
+		if( tmp[-1].equalsIgnoreCase("dev") || tmp[-1].equalsIgnoreCase("test") 
+		|| tmp[-1].equalsIgnoreCase("bugfix") || tmp[-1].equalsIgnoreCase("stable") ){
+			def num = tmp_list[1].size() - tmp[-1].size() -1
+			imageTag = tmp_list[1].substring(0, num) + "." + date + "-" + tmp[-1]
+		} else {
+			sh '{ echo -e "只可基于开发、测试、Bugfix分支以及Tag进行打包" && exit 12; }'
+		}
+	} else {
+		imageTag = BRANCH_TAG
+		echo "代码分支Tag将直接作为镜像Tag"
+	}
+	
+	imageTag = imageTag.toLowerCase()
+	echo "镜像的Tag为: ${imageTag}"
+	
+	def mvnHome = tool 'maven'
+	env.PATH = "${mvnHome}/bin:${env.PATH}"
+	def HARBOR_URL = "10.30.30.22:9080"
+	def imageName = "${HARBOR_URL}/isyscore/${MODULE_NAME}"
+	echo "镜像仓库地址：${HARBOR_URL}，项目：isyscore"
+	echo "镜像名称：${imageName}"
+	def SONAR_HOST_URL = "http://10.30.30.22:9000"
+
+	stage('单元测试') {
+		if ( params.JUnit) {
+			echo "开始单元测试"
+			// 注入jacoco插件配置,clean test执行单元测试代码. All tests should pass.
+			docker.image('maven:3-alpine').withRun('-v /data/.m2:/root/.m2') {
+				dir("project"){
+					sh "mvn org.jacoco:jacoco-maven-plugin:prepare-agent -pl ${MODULE_NAME} clean test -Dautoconfig.skip=true -DskipTests=false -Dmaven.test.skip=false -Dmaven.test.failure.ignore=false -am"
+					junit allowEmptyResults: true, keepLongStdio: true, testResults: '**/target/surefire-reports/*.xml'
+					// 配置单元测试覆盖率要求，未达到要求pipeline将会fail,code coverage.LineCoverage>20%.
+					// jacoco changeBuildStatus: true, maximumLineCoverage:"${params.lineCoverage}"
+					jacoco changeBuildStatus: true		
+				}
+			}
+		}
+	}
+	stage('静态检查') {
+		if (  params.SonarQube ) {
+			echo '开始静态检查' 
+ //       	def sonarqubeScannerHome = tool name: 'sonar-scanner'
+ //       	echo "${sonarqubeScannerHome}"
+ //       	sh "mvn sonar:sonar -Dsonar.projectKey=${MODULE_NAME} -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=9dff308dd9a8fa9e5bfce1e9ebd5c26659e7c16b -Dsonar.sources=project/${MODULE_NAME}/src/ -Dsonar.java.binaries=target/ -Dsonar.exclusions=project/${MODULE_NAME}/src/test/** -Dsonar.language=java "
+		}
+
+	}
+	stage('编译') {
+        docker.image('maven:3-alpine').withRun('-v /data/.m2:/root/.m2') {
+            dir('project') {
+                echo "mvn clean package module $MODULE_NAME"
+                withAnt(jdk: 'jdk8') {
+                    sh "java -version"
+                    sh "which java"
+                    sh "which mvn"
+                    sh "mvn -version"
+                    echo "--------------------------------"
+                    sh "mvn clean package -pl $MODULE_NAME -Dautoconfig.interactive=false -U -DskipTests=true -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -am $OBFUSCATE"
+                }
+            }
+        }
+    }
+	stage('代码混淆检查') {
+		if ( "local" == SERVICE_TYPE ){
+			dir('project') {
+				echo "开始代码混淆结果检查"
+				sh "[[ -f jar/${MODULE_NAME}.jar ]] && [[ -f jar/${MODULE_NAME}.jar ]] || (echo '请添加代码混淆';exit 1)"
+			}
+		}
+	}
+	stage('文件准备') {
+        sh "test -d build || mkdir build && echo \"copy build file to build directory\""
+        sh 'echo "当前目录:[`pwd`]"'
+        sh "\\cp -rf project/jar/${MODULE_NAME}.jar build/"
+        sh "\\cp -rf scripts/template/docker/* build/"
+        sh "mkdir -p ${WORKSPACE}/../configMap/${MODULE_NAME}/${imageTag}/${SERVICE_TYPE}"
+        sh "\\cp -rf project/${MODULE_NAME}/src/main/resources/cm.yml ${WORKSPACE}/../configMap/${MODULE_NAME}/${imageTag}/${SERVICE_TYPE}/cm.yml"
+        sh "python scripts/util/refresh-cm.py --src ${WORKSPACE}/../configMap/${MODULE_NAME}/${imageTag}/${SERVICE_TYPE}/cm.yml --value ${WORKSPACE}/config/${SERVICE_TYPE}/values-${ENV_TYPE}.yml --dest ${WORKSPACE}/../configMap/${MODULE_NAME}/${imageTag}/${SERVICE_TYPE}/${MODULE_NAME}-${SERVICE_TYPE}-cm.yml"
+    }
+    stage('镜像制作及推送') {
+        try {
+            echo "build docker images and push to custom Registry"
+            sh "docker version"
+            docker.withRegistry("http://${HARBOR_URL}", '88a0c6e5-128b-49fb-89c4-7cbe7c8a7593') {
+                dir('build') {
+                    def serviceImage = docker.build("${imageName}:${imageTag}", "-f Dockerfile --build-arg app=${MODULE_NAME}  .")
+                    /* Push the container to the custom Registry */
+                    serviceImage.push()
+                }
+            }
+        } finally {
+            dir('build') {
+                /* Clean up */
+                deleteDir()
+            }
+        }
+    }
+    stage('环境部署') {
+		echo "开始部署应用：${MODULE_NAME}} 到环境 ${ENV_TYPE}"
+		if ( params.Publish ){
+			build job: "${MODULE_NAME}_cd", parameters: [
+                string(name: 'TAG', value: "${imageTag}"),
+                string(name: 'ENV_TYPE', value: "$ENV_TYPE"),
+                string(name: 'SERVICE_TYPE', value: "${SERVICE_TYPE}")
+        	]
+		}
+    }
+}

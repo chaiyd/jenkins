@@ -1,0 +1,7 @@
+def pipeline
+def JOB_PATH = env.JOB_NAME
+node('master') {
+    checkout scm
+    pipeline = load "scripts/ci/$JOB_PATH/Jenkinsfile"
+    pipeline
+}
