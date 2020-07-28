@@ -2,7 +2,7 @@ FROM chaiyd/openjdk:jdk8-alpine
 
 LABEL maintainer="Jenkins Docker Maintainers <chaiyd.cn@gmail.com>"
 
-RUN apk add --no-cache git openssh-client curl unzip bash ttf-dejavu coreutils tini npm docker
+RUN apk add --no-cache git openssh-client curl unzip bash ttf-dejavu coreutils tini npm
 
 ARG user=jenkins
 ARG group=jenkins
@@ -13,7 +13,7 @@ ARG agent_port=50000
 ARG JENKINS_HOME=/var/jenkins_home
 ARG REF=/usr/share/jenkins/ref
 ARG maven=maven-3.6.1
-ARG JENKINS_VERSION=2.235.2
+ARG JENKINS_VERSION=2.235.3
 
 ENV JENKINS_HOME $JENKINS_HOME
 ENV JENKINS_SLAVE_AGENT_PORT ${agent_port}
