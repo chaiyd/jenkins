@@ -62,7 +62,7 @@ COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 RUN chmod a+x -R /usr/local/bin/
 
-ADD $maven.tgz /usr/local/
+ADD $maven /usr/local/$maven
 ENV MAVEN_HOME /usr/local/$maven
 ENV PATH $MAVEN_HOME/bin:$PATH
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
