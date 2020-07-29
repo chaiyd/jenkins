@@ -1,3 +1,6 @@
+## https://github.com/chaiyd/jenkins.git
+
+
 使用Jenkins官方dokerfile进行更改，更换war包源地址默认为LTS
 更改启动用户.
 build时，需指定版本号
