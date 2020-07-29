@@ -60,9 +60,10 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-RUN chmod a+x -R /usr/local/bin/
-
 ADD $maven /usr/local/$maven
+RUN chmod a+x -R /usr/local/bin/  && \
+    chmod a+x -R /usr/local/$maven/bin
+
 ENV MAVEN_HOME /usr/local/$maven
 ENV PATH $MAVEN_HOME/bin:$PATH
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
