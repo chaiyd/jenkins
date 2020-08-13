@@ -6,6 +6,7 @@
 build时，需指定版本号
 JENKINS_VERSION=jenkins版本号，注LTS版
 JENKINS_URL 可指定完整的url
+镜像中包含maven-3.6.1
 
 ##### Use Jenkins official dokerfile to change, update the war package source address default to LTS. 
 ##### Change the startup user.
