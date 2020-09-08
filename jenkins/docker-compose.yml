@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  jenkins:
+    container_name: upp-jenkins
+    image: chaiyd/jenkins:2.235.5
+    restart: always
+    volumes:
+      - /data/docker/jenkins/jenkins/:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock 
+      - /data/docker/jenkins/.m2:/root/.m2
+      - /data/docker/jenkins/.npm:/root/.npm
+      #- /usr/bin/kubectl:/usr/bin/kubectl
+      #- /root/.kube/config:/root/.kube/config
+      #- /root/.docker/config.json:/root/.docker/config.json
+      - /etc/hosts:/etc/hosts
+    ports:
+      - "9090:8080"
+      - "50000:50000"
+#    environment:
+#      - NGINX_PORT=8080
+    user: root
