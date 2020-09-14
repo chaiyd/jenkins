@@ -2,7 +2,7 @@ version: '3'
 
 services:
   jenkins:
-    container_name: upp-jenkins
+    container_name: jenkins
     image: chaiyd/jenkins:2.235.5
     restart: always
     volumes:
