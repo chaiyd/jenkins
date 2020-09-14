@@ -17,3 +17,7 @@
 * docker build --build-arg JENKINS_VERSION=2.235.4 -t jenkins:2.235.4 .
 * docker run --name jenkins -p 9090:8080 -p 50000:50000 -v /var/docker/jenkins:/var/jenkins_home jenkins:2.235.4
 
+
+---
+## ci-cd
+![ci-cd](image/jenkins_ci-cd.png)
