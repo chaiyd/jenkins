@@ -19,5 +19,5 @@
 ---
 
 ## build & run
-* docker build --build-arg JENKINS_VERSION=2.235.4 -t jenkins:2.235.4 .
+* docker build --build-arg JENKINS_VERSION=2.249.2 -t jenkins:2.249.2 .
 * docker-compose up -d
