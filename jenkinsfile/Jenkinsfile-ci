@@ -5,8 +5,8 @@ properties([parameters([
         string(defaultValue: 'http://10.30.30.3/common/services.git', description: '项目仓库地址', name: 'PROJECT_URL'),
         gitParameter(name: 'BRANCH_TAG', type: 'PT_BRANCH_TAG', branchFilter: '', defaultValue: 'master', selectedValue: 'DEFAULT', useRepository: "${params.PROJECT_URL}", sortMode: 'DESCENDING_SMART', description: '选择要项目的分支或Tag'),
         string(defaultValue: 'common-eureka', description: '服务模块名称', name: 'MODULE_NAME'),
-		[$class: 'WReadonlyStringParameterDefinition', defaultValue: '-Dproguard.obfuscate.ext=""', description: '代码混淆参数', name: 'OBFUSCATE'],
-		booleanParam(defaultValue: true, description: '单元测试', name: 'JUnit'),
+	[$class: 'WReadonlyStringParameterDefinition', defaultValue: '-Dproguard.obfuscate.ext=""', description: '代码混淆参数', name: 'OBFUSCATE'],
+	booleanParam(defaultValue: true, description: '单元测试', name: 'JUnit'),
         booleanParam(defaultValue: true, description: '静态检查', name: 'SonarQube'),
         booleanParam(defaultValue: true, description: 'API测试', name: 'API_CHECK'),
         booleanParam(defaultValue: true, description: '持续发布', name: 'Publish')
