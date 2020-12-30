@@ -6,7 +6,7 @@
 * build时，需指定版本号，默认为LTS版最新版
 * JENKINS_VERSION=jenkins版本号，注LTS版
 * JENKINS_URL 可指定完整的url
-* 镜像中包含maven-3.6.1
+* 镜像中包含maven-3.6.3
 * 默认已安装npm,cnpm
 
 ---
