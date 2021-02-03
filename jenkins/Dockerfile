@@ -52,6 +52,7 @@ ENV JENKINS_VERSION ${JENKINS_VERSION}
 
 # jenkins.war download will be validated using it
 
+#ARG JENKINS_URL=http://mirror.xmission.com/jenkins/${JENKINS_VERSION}/jenkins.war
 #ARG JENKINS_URL=https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/${JENKINS_VERSION}/jenkins.war  #china url
 ARG JENKINS_URL=http://mirror.xmission.com/jenkins/war-stable/${JENKINS_VERSION}/jenkins.war
 
