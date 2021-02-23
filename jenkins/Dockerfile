@@ -25,7 +25,7 @@ ARG agent_port=50000
 ARG JENKINS_HOME=/var/jenkins_home
 ARG REF=/usr/share/jenkins/ref
 ARG maven=maven-3.6.3
-ARG JENKINS_VERSION=2.263.4
+ARG JENKINS_VERSION=2.280
 
 ENV JENKINS_HOME $JENKINS_HOME
 ENV JENKINS_SLAVE_AGENT_PORT ${agent_port}
@@ -55,9 +55,9 @@ ENV JENKINS_VERSION ${JENKINS_VERSION}
 #ARG JENKINS_URL=http://mirror.xmission.com/jenkins/${JENKINS_VERSION}/jenkins.war
 #ARG JENKINS_URL=https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/${JENKINS_VERSION}/jenkins.war  #china url
 # LTS war
-ARG JENKINS_URL=http://mirror.xmission.com/jenkins/war-stable/${JENKINS_VERSION}/jenkins.war
+#ARG JENKINS_URL=http://mirror.xmission.com/jenkins/war-stable/${JENKINS_VERSION}/jenkins.war
 # Regular releases (Weekly)
-# ARG JENKINS_URL=http://mirror.xmission.com/jenkins/war/${JENKINS_VERSION}/jenkins.war
+ARG JENKINS_URL=http://mirror.xmission.com/jenkins/war/${JENKINS_VERSION}/jenkins.war
 
 # could use ADD but this one does not check Last-Modified header neither does it allow to control checksum
 # see https://github.com/docker/docker/issues/8331
