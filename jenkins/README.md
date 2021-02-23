@@ -1,14 +1,12 @@
 ## https://github.com/chaiyd/jenkins.git
 
-## jenkins
-- Weekly
+## jenkins Weekly
 - 使用Jenkins官方dokerfile进行更改
 - 默认使用jenkins 用户.
 - 镜像中包含maven-3.6.3
 - 默认已安装npm,cnpm
 
 ---
-- Weekly
 - Use Jenkins official dokerfile to change
 - Use jenkins user by default.
 - When building, you need to specify the version number,The default is the latest version of lts version
