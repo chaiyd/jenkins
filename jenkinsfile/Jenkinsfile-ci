@@ -93,7 +93,7 @@ node("${NODE}") {
 
 	}
 	stage('编译') {
-        docker.image('maven:3-alpine').withRun('-v /data/.m2:/root/.m2') {
+        docker.image('maven:3-alpine').inside('') { //withRun('-v /data/.m2:/root/.m2') {
             dir('project') {
                 echo "mvn clean package module $MODULE_NAME"
                 withAnt(jdk: 'jdk8') {
