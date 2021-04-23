@@ -3,7 +3,7 @@ version: '3'
 services:
   jenkins:
     container_name: jenkins
-    image: chaiyd/jenkins:2.277.2
+    image: chaiyd/jenkins:2.277.3
     restart: always
     volumes:
       - /data/docker/jenkins/jenkins/:/var/jenkins_home
