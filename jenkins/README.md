@@ -3,8 +3,8 @@
 ## jenkins Weekly
 - 使用Jenkins官方dokerfile进行更改
 - 默认使用jenkins 用户.
-- 镜像中包含maven-3.6.3
-- 默认已安装npm,cnpm
+- ~~镜像中包含maven-3.6.3~~
+- ~~默认已安装npm,cnpm~~
 
 ---
 - Use Jenkins official dokerfile to change
