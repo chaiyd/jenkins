@@ -24,8 +24,8 @@ ARG http_port=8080
 ARG agent_port=50000
 ARG JENKINS_HOME=/var/jenkins_home
 ARG REF=/usr/share/jenkins/ref
-ARG maven=maven-3.6.3
-ARG JENKINS_VERSION=2.295
+#ARG maven=maven-3.6.3
+ARG JENKINS_VERSION=2.296
 
 ENV JENKINS_HOME $JENKINS_HOME
 ENV JENKINS_SLAVE_AGENT_PORT ${agent_port}
