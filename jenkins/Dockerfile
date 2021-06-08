@@ -1,6 +1,6 @@
-FROM chaiyd/openjdk:jdk8-alpine
+FROM mcr.microsoft.com/java/jre:11-zulu-alpine
 
-LABEL maintainer="Jenkins Docker Maintainers <chaiyd.cn@gmail.com>"
+LABEL maintainer="Maintainers<chaiyd.cn@gmail.com>"
 
 RUN apk add --no-cache \
   bash \
