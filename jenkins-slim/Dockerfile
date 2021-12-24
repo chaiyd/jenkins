@@ -5,7 +5,7 @@ ARG MAVEN_VER=3.8.4
 USER root
 
 RUN apt update && \
-    apt install wget ca-certificates curl gnupg lsb-release -y && \
+    apt install wget ca-certificates software-properties-common curl lsb-release -y && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
@@ -17,4 +17,3 @@ RUN apt update && \
 
 ENV MAVEN_HOME /usr/local/apache-maven-${MAVEN_VER}
 ENV PATH $MAVEN_HOME/bin:$PATH
-
